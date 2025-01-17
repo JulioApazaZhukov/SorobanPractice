@@ -1,108 +1,44 @@
-#include <iostream>
-#include <stdlib.h>
-#include <time.h>
-
-using std::cin;
-using std::cout;
-using std::endl;
-
-float row_sistem(int RN, float PS)
-{
-    if (RN >= 3)
-    {
-        PS += 0.5;
-    }
-    return PS;
-}
+#include "declarations.hpp"
 
 int main()
 {
-    srand(static_cast<unsigned int>(time(NULL)));
+    fundamentalInterfaceComponents();
+    srand(static_cast<unsigned int>(time(NULL))); 
 
-    int rn = 0;
-    int noex;
-    char opt;
-    float score = 0;
+    int rn = 0;          
+    int noex;            
+    char opt;            
+    float score = 0;     
     float plus_score = 1;
 
-    cout << "Suma = +, resta = -, y multiplicacion = *" << endl;
-    cin >> (opt);
+    gotoxy(28, 2); cout << "Select operation: sum (+), sub (-), mult (*)" << endl;
+    cin >> opt;
 
-    cout << "Cuantos ejercicios quiere resolver: 5, 10, 15, 20" << endl;
-    cin >> (noex);
+    if (!is_valid_operator(opt))
+    {
+        cout << "Operador no válido. Intente de nuevo." << endl;
+        return 1;
+    }
+
+    cout << "¿How many exercises? (Opt: 5, 10, 15, 20)" << endl;
+    cin >> noex;
+
+    if (!is_valid_exercise_count(noex))
+    {
+        cout << "Número de ejercicios no válido. Intente de nuevo." << endl;
+        return 1;
+    }
 
     for (int i = 0; i < noex; i++)
     {
-        int num1 = 1 + rand() % 101;
-        int num2 = 1 + rand() % 101;
-        int numb1 = 1 + rand() % 13;
-        int numb2 = 1 + rand() % 13;
-        int p_answer;
-        int answer;
-
-        switch (opt)
+        if (!handle_operation(opt, rn, plus_score, score))
         {
-        case '+':
-            cout << num1 << " " << num2 << endl;
-            answer = num1 + num2;
-            cin >> p_answer;
-            cout << answer << " ";
-            if (p_answer == answer) {
-                score += plus_score;
-                cout << "| +" << plus_score << "pts" << endl;
-                rn++;
-                plus_score = row_sistem(rn, plus_score);
-            }
-            else {
-                cout << "| 0 pts" << endl;
-                rn = 0;
-                plus_score = 1;
-            }
-            break;
-        case '-':
-            cout << num1 << " " << num2 << endl;
-            answer = num1 - num2;
-            cin >> p_answer;
-            cout << answer << " ";
-            if (p_answer == answer) {
-                score += plus_score;
-                cout << "| +" << plus_score << "pts" << endl;
-                rn++;
-                plus_score = row_sistem(rn, plus_score);
-            }
-            else {
-                cout << "| 0 pts" << endl;
-                rn = 0;
-                plus_score = 1;
-            }
-            break;
-        case '*':
-            cout << numb1 << " " << numb2 << endl;
-            answer = numb1 * numb2;
-            cin >> ("%i \n", p_answer);
-            cout << answer << " ";
-            if (p_answer == answer) {
-                score += plus_score;
-                cout << "| +" << plus_score << "pts" << endl;
-                rn++;
-                plus_score = row_sistem(rn, plus_score);
-            }
-            else {
-                cout << "| 0 pts" << endl;
-                rn = 0;
-                plus_score = 1;
-            }
-            break;
-        default:
-            cout << "Ingrece un operador valido" << endl;
-            break;
+            cout << "Error al procesar la operación. Intente de nuevo." << endl;
+            return 1;
         }
     }
 
-    cout << "Final score: " << score << endl;
-
-    int finish;
-    cin >> finish;
+    cout << "Puntaje final: " << score << " pts" << endl;
 
     return 0;
 }
