@@ -38,7 +38,11 @@ int main()
         }
     }
 
-    cout << "Puntaje final: " << score << " pts" << endl;
+    system("cls");
+    appearance();
+    border(0, 0, 99, 29);
+    gotoxy(28, 15); cout << "Puntaje final: " << score << " pts" << endl;
+    gotoxy(28, 16); system("Pause");
 
     return 0;
 }
