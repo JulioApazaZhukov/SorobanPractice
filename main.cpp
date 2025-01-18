@@ -12,7 +12,7 @@ int main()
     float plus_score = 1;
 
     gotoxy(28, 2); cout << "Select operation: sum (+), sub (-), mult (*)" << endl;
-    cin >> opt;
+    gotoxy(28, 4); cin >> opt;
 
     if (!is_valid_operator(opt))
     {
@@ -20,8 +20,8 @@ int main()
         return 1;
     }
 
-    cout << "¿How many exercises? (Opt: 5, 10, 15, 20)" << endl;
-    cin >> noex;
+    gotoxy(28, 5); cout << "How many exercises? (Opt: 5, 10, 15, 20)" << endl;
+    gotoxy(28, 6); cin >> noex;
 
     if (!is_valid_exercise_count(noex))
     {

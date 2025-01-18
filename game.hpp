@@ -9,8 +9,8 @@ float row_sistem(int RN, float PS)
 
 bool handle_operation(char opt, int &rn, float &plus_score, float &score)
 {
-    int num1 = 1 + rand() % 101;
-    int num2 = 1 + rand() % 101;
+    int num1 = 1 + rand() % 1001;
+    int num2 = 1 + rand() % 1001;
     int numb1 = 1 + rand() % 13;
     int numb2 = 1 + rand() % 13;
     int p_answer;               
@@ -19,15 +19,15 @@ bool handle_operation(char opt, int &rn, float &plus_score, float &score)
     switch (opt)
     {
     case '+':
-        cout << num1 << " + " << num2 << " = ";
+        gotoxy(28, 8); cout << num1 << " + " << num2 << " = ";
         answer = num1 + num2;
         break;
     case '-': 
-        cout << num1 << " - " << num2 << " = ";
+        gotoxy(28, 8); cout << num1 << " - " << num2 << " = ";
         answer = num1 - num2;
         break;
     case '*': 
-        cout << numb1 << " * " << numb2 << " = ";
+        gotoxy(28, 8); cout << numb1 << " * " << numb2 << " = ";
         answer = numb1 * numb2;
         break;
     default:
@@ -39,16 +39,23 @@ bool handle_operation(char opt, int &rn, float &plus_score, float &score)
     if (p_answer == answer)
     {
         score += plus_score;
-        cout << "¡Correcto! | +" << plus_score << " pts" << endl;
+        gotoxy(28, 10); cout << "Correct! | +" << plus_score << " pts" << endl;
         rn++; 
-        plus_score = row_sistem(rn, plus_score); 
+        plus_score = row_sistem(rn, plus_score);
+        gotoxy(28, 18); system("Pause");
     }
     else
     {
-        cout << "Incorrecto. La respuesta era: " << answer << endl;
+        gotoxy(28, 10); cout << "Incorrect, the correct answer is: " << answer << endl;
         rn = 0;         
         plus_score = 1; 
+        gotoxy(28, 18); system("Pause");
     }
+
+    system("cls");
+    appearance();
+    border(0, 0, 99, 29);
+
     return true;
 }
 
