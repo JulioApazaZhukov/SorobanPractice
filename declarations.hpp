@@ -14,3 +14,5 @@ void gotoxy(int, int);
 void appearance(void);
 void border(int, int, int, int);
 void fundamentalInterfaceComponents(void);
+bool handle_operation(char, int &, float &, float &);
+float row_sistem(int, float);
