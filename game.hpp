@@ -11,8 +11,8 @@ bool handle_operation(char opt, int &rn, float &plus_score, float &score)
 {
     int num1 = 1 + rand() % 1001;
     int num2 = 1 + rand() % 1001;
-    int numb1 = 1 + rand() % 13;
-    int numb2 = 1 + rand() % 13;
+    int numb1 = 1 + rand() % 100;
+    int numb2 = 1 + rand() % 10;
     int p_answer;               
     int answer;                 
 
