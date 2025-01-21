@@ -16,3 +16,5 @@ void border(int, int, int, int);
 void fundamentalInterfaceComponents(void);
 bool handle_operation(char, int &, float &, float &);
 float row_sistem(int, float);
+bool is_valid_operator(char);
+bool is_valid_exercise_count(int);
