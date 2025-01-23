@@ -23,6 +23,10 @@ int main()
     gotoxy(28, 5); cout << "How many exercises? (Opt: 5, 10, 15, 20)" << endl;
     gotoxy(28, 6); cin >> noex;
 
+    system("cls");
+    appearance();
+    border(0, 0, 99, 29);
+
     if (!is_valid_exercise_count(noex))
     {
         cout << "Número de ejercicios no válido. Intente de nuevo." << endl;
